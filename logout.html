@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css">
+   <style>
+      *{
+         margin: 0;
+         padding: 0;
+         text-decoration: none;
+         box-sizing: border-box;
+         font-family:sans-serif;
+      }
+      body{
+         background: #c5c6c7;
+      }
+      .Container .section{
+         width: calc(100% - 225px);
+         margin-left: 225px;
+         transition: all 0.5s ease;
+      }
+      .navB{
+         background: #1f2833;
+         height: 80px;
+         display: flex;
+         align-items: center;
+         padding: 0 30px;
+      }
+      .burgerSign a{
+         font-size: 28px;
+         color: #f4fbff;
+      }
+      .Container .section .navB .burgerSign a:hover{
+         color: rgb(18, 255, 223);
+      }
+      .item_side_container{
+         background:#037e97;
+         position: fixed;
+         width: 225px;
+         height: 100%;
+         padding: 20px 0;
+         top: 0px;
+         left: 0px;
+         transition: all 0.5s ease;
+      }
+	  
+   
+      .item_side_container ul li a{
+         display: block;
+         font-size: 16px;
+         position: relative;
+         padding: 13px 30px;
+         border-bottom: 1px solid #5AC3B0;
+         color: rgb(241, 237, 237);
+      }
+      .item_side_container ul li a .icon{
+         color: black;
+         width: 30px;
+         display: inline-block;
+         margin-left: 20px;
+      }
+      .item_side_container ul li a:hover .icon,
+      .item_side_container ul li a.active .icon{
+         color: rgb(18, 255, 223);
+		 }
+	.sidebar a:hover
+	{
+		color: rgb(18, 255, 223);
+      }
+      body.active .Container .item_side_container{
+         left: -225px;
+      }
+      body.active .Container .section{
+         margin-left: 0;
+         width: 100%;
+      }
+      body.active .Container .section .navB h2
+      {
+         margin-left: 60px;
+         letter-spacing: 5px;
+         
+      }
+      body.active .item_container{
+         margin-left: -90px;
+         transition: all 0.5s ease;
+        
+         
+      }
+
+
+      .body-area
+      {
+         width: 100%;
+         
+      }
+      
+      h2 {
+         display: flex;
+     
+         color: aliceblue;
+         
+       
+         padding-left: 230px;
+         font-size: 40px;
+      }
+      .profile
+      {
+         height: 150px;
+         display: flex;
+         justify-content: center;
+         padding-top: 30px;
+                     
+       }
+       
+
+
+.item_container{
+	width: calc(60% - 350px);
+   transition: all 0.5s ease;
+	position: absolute;
+	top: 45%;
+	left: 57%;
+	transform: translate(-50%, -50%);
+	background-color:#037e97;
+	padding: 40px;
+	border-radius: 20px;
+}
+
+.item_container h2 {
+	text-align: center;
+	margin-bottom: 30px;
+	color:white;   
+}
+.user-box
+{
+color: white;
+padding: 10px;
+padding-bottom: 20px;
+font-size: 20px;
+padding-left: 20px;
+}
+#loader
+{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(245, 240, 240, 0.5) url('1sticker.gif') center no-repeat ;
+	z-index: 9999;
+	
+}
+
+      
+   </style>
+</head>
+<body>
+   <div id="loader"></div>   
+   <div class="Container">
+         <div class="section">
+            <div class="navB">
+              
+                     <div class="burgerSign">
+                        <a href="#">   <i class="fas fa-bars"></i> </a>
+                     </div> 
+                     <h2 >Warehouse Management</h2>
+                           
+            </div>
+         </div>
+         <div class="item_side_container">
+               <div class="profile" >
+                 <!-- <image src="1674182328541_image.png" width="80px" height="80px">     </image> -->
+               </div>
+            <ul class="sidebar">
+               <li>
+                  <a href="new.html">
+                     <span class="icon"><i class="fas fa-home"></i></span>Home
+                  </a>
+               </li>
+               <li>
+                  <a href="dashboard.html">
+                     <span class="icon"><i class="fas fa-desktop"></i></span>Dashboard
+                  </a>
+               </li>
+               <li>
+                  <a href="about.html">
+                     <span class="icon"><i class="fa fa-info-circle"></i></span>About
+                  </a>
+               </li>
+               <li>
+                  <a href="help.html">
+                     <span class="icon"><i class="fa-solid fa-phone"></i></span>Contact Us
+                  </a>
+               </li>
+               <li>
+                  <a href="logout.html">
+                     <span class="icon"><i class="fa-solid fa-sign-out"></i></span>Log out
+                  </a>   
+                 
+               </li>
+            </ul>
+         </div>
+         <div class="item_container">
+            <h2 style="padding-left: 80px; text-shadow: 4px 5px 8px rgba(0, 0, 0, 0.7);">Logout</h2>
+          
+             
+               <div class="user-box">
+                  
+                     Are you sure want to Logout?
+               </div>
+               <div class="button-box" style="padding-left: 100px;">
+                     <input type="button" id="logout" class="logout"  value="Yes" style= "background-color: #1f2833; color: #fff; padding: 5px 5px; font-size: 15px; text-align: center;  font-weight: bold;">  &nbsp;
+                     <input type="button" id="logoutNo" class="logoutNo" value="NO" style=" background-color: #1f2833; color: #fff;  padding: 5px 6px; font-size: 15px; text-align: center;  font-weight: bold;">
+               </div>
+            
+         </div>
+   <script>
+      document.querySelector(".burgerSign").addEventListener("click", function(){
+         document.querySelector("body").classList.toggle("active");
+      });
+
+   
+         window.addEventListener('load',function()
+             {
+                 var loader = document.getElementById('loader');
+                 loader.style.display = 'none';
+                 
+             });
+            
+         
+   </script>
+   <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+      import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js";
+      import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyC8rGPM2g5S0bq8pIpNmQQR5zKbN5yxi34",
+        authDomain: "warehouse-management-9330c.firebaseapp.com",
+        databaseURL: "https://warehouse-management-9330c-default-rtdb.firebaseio.com",
+        projectId: "warehouse-management-9330c",
+        storageBucket: "warehouse-management-9330c.appspot.com",
+        messagingSenderId: "662529124580",
+        appId: "1:662529124580:web:714ab6d4ca542d7ab464f1"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const database = getDatabase(app);
+      const auth = getAuth();
+  
+         logout.addEventListener('click',(e) =>
+         {
+         signOut(auth).then(() => {
+            alert("Signout Sucessfull");
+              window.location.href = "Login.html";
+            
+               
+               
+            // Sign-out successful.
+            }).catch((error) => {
+            // An error happened.
+            alert(error);
+            });
+         });
+                 
+               //   // DisableBackButton();
+               //    window.onload = DisableBackButton;
+               //    window.onpageshow = function(evt) { if (evt.persisted) DisableBackButton() }
+               //    window.onunload = function() { void (0) }
+         logoutNo.addEventListener('click',(e) =>
+         {
+            window.location.href="new.html";
+         })
+
+       
+    </script>
+</body>
+</html>

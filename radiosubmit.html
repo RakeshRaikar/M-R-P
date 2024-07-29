@@ -1,0 +1,506 @@
+<html>
+    <head>
+        <title>Customer Request</title>
+
+       <!-- <link rel="stylesheet" type="text/css" href="submit.css">   -->
+        <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+        <style>
+       
+            *
+            {
+                padding: 0;
+                margin: 0;
+                font-family: 'Times New Roman', Times, serif;
+            }
+            body
+            {
+                background: #c5c6c7;
+                background-size: cover;
+                color: #0c2e58;
+            }
+            .submitform
+            {
+                position: relative;
+            }
+            .submitform::after
+            {
+                content: "";
+            }
+
+            .submitform h2
+            {
+                font-size: 40px;
+                text-align: center;
+                text-transform: uppercase;
+                margin: 40px 0;
+                color: #037e97;
+                text-shadow: 4px 5px 8px rgba(115, 202, 243, 0.7);    
+            }
+            .submitform h3
+            {
+                margin-left: 100px;
+                font-size: 28px;
+                margin-bottom: 10px;
+
+            }
+            .submitform ul
+            {
+                margin-left: 225px;
+                margin-top: 10px;
+                padding: 0px;
+                font-size: 25px;
+            }
+
+
+
+            .submitform input[type="text"]
+            {
+                margin-left: 5px;
+                font-size: 19px;
+                padding: 5px 0px;  
+                padding-top: 1px;
+                padding-bottom: 1PX;
+                margin-bottom: 5px;
+                width: 9.5%;
+                border: 0;
+                border-radius: 6px;
+                outline: none;
+                font-weight: bold;
+                text-align: center;
+                
+            }
+            .submitform button
+            {
+                font-size: 20px;
+                font-weight: bold;
+                margin: 10px 90PX;
+                padding: 0px 0px;
+                width: 15%;
+                border: 0;
+                border-radius: 5px;
+                background: #5bbed1;
+            }
+            .submitform button:hover
+            {
+                background-color: black;
+                color: #fff;
+            }
+            #loader
+            {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(245, 240, 240, 0.5) url('1sticker.gif') no-repeat center;
+                z-index: 9999;
+                
+            }
+
+        </style>
+		<script>
+			function numbersonly(input)
+			{
+				var reg=/[^0-9]/gi;
+				input.value=input.value.replace(reg,"" );
+
+			}
+           <script>
+			function chclkareca() {
+				document.getElementById('content').style.display = 'block';
+				document.getElementById('content2').style.display = 'none';
+				document.getElementById('content3').style.display = 'none';
+				document.getElementById('content4').style.display = 'none';
+				document.getElementById('content5').style.display = 'none';
+				document.getElementById('content6').style.display = 'none';
+			}
+
+			function chclkgngr() {
+				document.getElementById('content').style.display = 'none';
+				document.getElementById('content2').style.display = 'block';
+				document.getElementById('content3').style.display = 'none';
+				document.getElementById('content4').style.display = 'none';
+				document.getElementById('content5').style.display = 'none';
+				document.getElementById('content6').style.display = 'none';
+			}
+
+			function chclkmiz() {
+				document.getElementById('content').style.display = 'none';
+				document.getElementById('content2').style.display = 'none';
+				document.getElementById('content3').style.display = 'block';
+				document.getElementById('content4').style.display = 'none';
+				document.getElementById('content5').style.display = 'none';
+				document.getElementById('content6').style.display = 'none';
+			}
+
+			function chclkmlt() {
+				document.getElementById('content').style.display = 'none';
+				document.getElementById('content2').style.display = 'none';
+				document.getElementById('content3').style.display = 'none';
+				document.getElementById('content4').style.display = 'block';
+				document.getElementById('content5').style.display = 'none';
+				document.getElementById('content6').style.display = 'none';
+			}
+
+			function chclkpdy() {
+				document.getElementById('content').style.display = 'none';
+				document.getElementById('content2').style.display = 'none';
+				document.getElementById('content3').style.display = 'none';
+				document.getElementById('content4').style.display = 'none';
+				document.getElementById('content5').style.display = 'block';
+				document.getElementById('content6').style.display = 'none';
+			}
+
+			function chclkppr() {
+				document.getElementById('content').style.display = 'none';
+				document.getElementById('content2').style.display = 'none';
+				document.getElementById('content3').style.display = 'none';
+				document.getElementById('content4').style.display = 'none';
+				document.getElementById('content5').style.display = 'none';
+				document.getElementById('content6').style.display = 'block';
+			}
+
+            function hidettlamtareca()
+            {
+                document.getElementById("amount1").style.display="block";
+                var num1 = parseFloat(document.getElementById('input1').value);
+                var num2 = parseFloat(document.getElementById('input2').value);
+                var result = num1 * num2 * 60;
+                document.getElementById('result1').value = result;
+
+                const subbtn=document.getElementById('submit');
+                check();
+
+
+
+            }
+            function hidettlamtging()
+            {
+                document.getElementById("amount2").style.display="block";
+                var num1 = parseFloat(document.getElementById('input3').value);
+                var num2 = parseFloat(document.getElementById('input4').value);
+                var result = num1 * num2 * 50;
+                document.getElementById('result2').value = result;
+                
+                const subbtn=document.getElementById('submit');
+                // subbtn.disabled = false;
+                check();
+
+            }
+            function hidettlamtmaiz()
+            {
+                document.getElementById("amount3").style.display="block";
+                var num1 = parseFloat(document.getElementById('input5').value);
+                var num2 = parseFloat(document.getElementById('input6').value);
+                var result = num1 * num2 * 40;
+                document.getElementById('result3').value = result;
+            //     subdisable()
+               const subbtn=document.getElementById('submit');
+                // subbtn.disabled = false;
+                check();
+
+            }
+            function hidettlamtmlt()
+            {   
+                
+                document.getElementById("amount4").style.display="block";
+                var num1 = parseFloat(document.getElementById('input7').value);
+                var num2 = parseFloat(document.getElementById('input8').value);
+                var result = num1 * num2 * 30;
+                document.getElementById('result4').value = result;
+                // subdisable()
+                const subbtn=document.getElementById('submit');
+                // subbtn.disabled = false;
+                check();
+
+            }
+            function hidettlamtpdy()
+            {
+                document.getElementById("amount5").style.display="block";
+                var num1 = parseFloat(document.getElementById('input9').value);
+                var num2 = parseFloat(document.getElementById('input10').value);
+                var result = num1 * num2 * 30;
+                document.getElementById('result5').value = result;  
+                // subdisable()
+                const subbtn=document.getElementById('submit');
+                // subbtn.disabled = false;
+                check();
+
+            }
+            function hidettlamtppr()
+            {
+                document.getElementById("amount6").style.display="block";
+                var num1 = parseFloat(document.getElementById('input11').value);
+                var num2 = parseFloat(document.getElementById('input12').value);
+                var result = num1 * num2 * 80;
+                document.getElementById('result6').value = result; 
+                // subdisable()
+                const subbtn=document.getElementById('submit');
+                // subbtn.disabled = false;
+                check();
+			
+			}	
+            
+            function check()
+            {
+                
+                var button1=document.getElementById("btn1");
+                var button2=document.getElementById("btn2");
+                var button3=document.getElementById("btn3");
+                var button4=document.getElementById("btn4");
+                var button5=document.getElementById("btn5");
+                var button6=document.getElementById("btn6");
+              
+
+                
+                var subbtn=document.getElementById('submit');
+                if(button1.click = true)
+                {   
+                  
+                    subbtn.disabled = false;
+                }
+                else if(button2.click = true)
+                {
+                    subbtn.disabled == true;
+                }
+                else if(button3.click = true)
+                {
+                    subbtn.disabled == false;
+                }
+                else if(button4.click = true)
+                {
+                    subbtn.disabled == false;
+                }
+                else if(button5.click = true)
+                {
+                    subbtn.disabled == false;
+                }
+                else if(button6.click = true)
+                {
+                    subbtn.disabled == false;
+                }
+                else
+                {
+                    alert("false");
+                    subbtn.disabled = true;
+                }
+                
+            }
+            function checkinputareca()
+            {
+                var input1=document.getElementById("input1").value;
+                var input2=document.getElementById("input2").value;
+                var button=document.getElementById("btn1");
+                if(input1 === '' || input2 === '')
+                {
+                    button.disabled = true;
+                }
+                else
+                {
+                    button.disabled = false;
+                }
+
+              
+
+            }
+            function checkinputgngr()
+            {
+                var input1=document.getElementById("input3").value;
+                var input2=document.getElementById("input4").value;
+                var button=document.getElementById("btn2");
+                if(input1 === '' || input2 === '')
+                {
+                    button.disabled = true;
+                }
+                else
+                {
+                    button.disabled = false;
+                }
+            }
+            function checkinputmiz()
+            {
+                var input1=document.getElementById("input5").value;
+                var input2=document.getElementById("input6").value;
+                var button=document.getElementById("btn3");
+                if(input1 === '' || input2 === '')
+                {
+                    button.disabled = true;
+                }
+                else
+                {
+                    button.disabled = false;
+                }
+            }
+            function checkinputmlt()
+            {
+                var input1=document.getElementById("input7").value;
+                var input2=document.getElementById("input8").value;
+                var button=document.getElementById("btn4");
+                if(input1 === '' || input2 === '')
+                {
+                    button.disabled = true;
+                }
+                else
+                {
+                    button.disabled = false;
+                }
+            }
+            function checkinputpdy()
+            {
+                var input1=document.getElementById("input9").value;
+                var input2=document.getElementById("input10").value;
+                var button=document.getElementById("btn5");
+                if(input1 === '' || input2 === '')
+                {
+                    button.disabled = true;
+                }
+                else
+                {
+                    button.disabled = false;
+                }
+            }
+            function checkinputppr()
+            {
+                var input1=document.getElementById("input11").value;
+                var input2=document.getElementById("input12").value;
+                var button=document.getElementById("btn6");
+                if(input1 === '' || input2 === '')
+                {
+                    button.disabled = true;
+                }
+                else
+                {
+                    button.disabled = false;
+                }
+            }
+            
+           
+        </script>
+    </head>
+    <body>
+        <div class="submitform">
+            <h2>Warehouse Management</h2>
+            <div id="loader"></div>
+			<form action="process.php" method="post">
+				<input type="hidden" id="hiddenEmail" name="hiddenEmail" value="">
+
+				<h3><input type="radio" id="mycheck1" name="crop" value="ARECANUT" onclick="chclkareca()">ARECANUT</h3><br>
+				<ul id="content" style="display:none">
+					Weight of the crop : <input type="text" id="input1" name="input1" oninput="checkinputareca()" placeholder="In Quintals" onkeyup="numbersonly(this)">.q<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					Period : <input type="text" id="input2" name="input2" oninput="checkinputareca()" placeholder="In months" onkeyup="numbersonly(this)">.m<br>
+					<button type="button" onclick="hidettlamtareca()" id="btn1" disabled>Calculate Amount</button><br>
+					<ul id="amount1" style="display:none; margin-left:0px;">
+						Total Amount : <input type="text" id="result1" name="result1" placeholder="In Rupees"><br>
+					</ul>
+				</ul>
+
+				<h3><input type="radio" id="mycheck2" name="crop" value="GINGER" onclick="chclkgngr()">GINGER</h3><br>
+				<ul id="content2">
+					Weight of the crop : <input type="text" id="input3" name="input3" oninput="checkinputgngr()" placeholder="In Quintals" onkeyup="numbersonly(this)">.q<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					Period : <input type="text" id="input4" name="input4" oninput="checkinputgngr()" placeholder="In months" onkeyup="numbersonly(this)">.m<br>
+					<button type="button" onclick="hidettlamtging()" id="btn2" disabled>Calculate Amount</button><br>
+					<ul id="amount2" style="display:none; margin-left:0px;">
+						Total Amount : <input type="text" id="result2" name="result2" placeholder="In Rupees"><br>
+					</ul>
+				</ul>
+
+				<h3><input type="radio" id="mycheck3" name="crop" value="MAIZE" onclick="chclkmiz()">MAIZE</h3><br>
+				<ul id="content3" >
+					Weight of the crop : <input type="text" id="input5" name="input5" oninput="checkinputmiz()" placeholder="In Quintals" onkeyup="numbersonly(this)">.q<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					Period : <input type="text" id="input6" name="input6" oninput="checkinputmiz()" placeholder="In months" onkeyup="numbersonly(this)">.m<br>
+					<button type="button" onclick="hidettlamtmaiz()" id="btn3" disabled>Calculate Amount</button><br>
+					<ul id="amount3" style="display:none; margin-left:0px;">
+						Total Amount : <input type="text" id="result3" name="result3" placeholder="In Rupees"><br>
+					</ul>
+				</ul>
+
+				<h3><input type="radio" id="mycheck4" name="crop" value="MILLET" onclick="chclkmlt()">MILLET</h3><br>
+				<ul id="content4" >
+					Weight of the crop : <input type="text" id="input7" name="input7" oninput="checkinputmlt()" placeholder="In Quintals" onkeyup="numbersonly(this)">.q<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					Period : <input type="text" id="input8" name="input8" oninput="checkinputmlt()" placeholder="In months" onkeyup="numbersonly(this)">.m<br>
+					<button type="button" onclick="hidettlamtmlt()" id="btn4" disabled>Calculate Amount</button><br>
+					<ul id="amount4" style="display:none; margin-left:0px;">
+						Total Amount : <input type="text" id="result4" name="result4" placeholder="In Rupees"><br>
+					</ul>
+				</ul>
+
+				<h3><input type="radio" id="mycheck5" name="crop" value="PADDY" onclick="chclkpdy()">PADDY</h3><br>
+				<ul id="content5" >
+					Weight of the crop : <input type="text" id="input9" name="input9" oninput="checkinputpdy()" placeholder="In Quintals" onkeyup="numbersonly(this)">.q<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					Period : <input type="text" id="input10" name="input10" oninput="checkinputpdy()" placeholder="In months" onkeyup="numbersonly(this)">.m<br>
+					<button type="button" onclick="hidettlamtpdy()" id="btn5" disabled>Calculate Amount</button><br>
+					<ul id="amount5" style="display:none; margin-left:0px;">
+						Total Amount : <input type="text" id="result5" name="result5" placeholder="In Rupees"><br>
+					</ul>
+				</ul>
+
+				<h3><input type="radio" id="mycheck6" name="crop" value="PEPPER" onclick="chclkppr()">PEPPER</h3><br>
+				<ul id="content6" >
+					Weight of the crop : <input type="text" id="input11" name="input11" oninput="checkinputppr()" placeholder="In Quintals" onkeyup="numbersonly(this)">.q<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					Period : <input type="text" id="input12" name="input12" oninput="checkinputppr()" placeholder="In months" onkeyup="numbersonly(this)">.m<br>
+					<button type="button" onclick="hidettlamtppr()" id="btn6" disabled>Calculate Amount</button><br>
+					<ul id="amount6" style="display:none; margin-left:0px;">
+						Total Amount : <input type="text" id="result6" name="result6" placeholder="In Rupees"><br>
+					</ul>
+				</ul>
+
+				<ul>
+					<button id="submit" style="padding: 10px;">SUBMIT</button>
+				</ul>
+			</form>
+        </div>
+        <script>
+            window.addEventListener('load',function()
+                {
+                    var loader = document.getElementById('loader');
+                    loader.style.display = 'none';
+                    
+                });
+               
+            
+            </script>
+
+        <script>
+            var firebaseConfig = {
+                
+                            apiKey: "AIzaSyC8rGPM2g5S0bq8pIpNmQQR5zKbN5yxi34",
+                            authDomain: "warehouse-management-9330c.firebaseapp.com",
+                            databaseURL: "https://warehouse-management-9330c-default-rtdb.firebaseio.com",
+                            projectId: "warehouse-management-9330c",
+                            storageBucket: "warehouse-management-9330c.appspot.com",
+                            messagingSenderId: "662529124580",
+                            appId: "1:662529124580:web:714ab6d4ca542d7ab464f1"
+                            };
+              // Your Firebase configuration here
+        
+            firebase.initializeApp(firebaseConfig);
+            
+            firebase.auth().onAuthStateChanged(function(user)
+            {
+                if(user)
+                {
+                    
+                    var email = user.email;
+                    document.getElementById("hiddenEmail").value = email;
+                    
+              
+                }
+            });
+            
+
+            
+
+            
+          </script>
+    </body>
+
+
+</html>

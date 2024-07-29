@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Register page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        body {
+            background: #c5c6c7;
+            background-size: cover;
+        }
+
+        .login-box {
+            width: 280px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #037e97;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .login-box h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #fff;
+            font-size: 30px;
+            text-shadow: 4px 5px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .user-box {
+            position: relative;
+        }
+
+        .user-box input {
+            width: 100%;
+            padding: px 0;
+            font-size: 16px;
+            color: #fff;
+            margin-bottom: 30px;
+            border: none;
+            border-bottom: 1px solid #333;
+            outline: none;
+            background-color: #037e97;
+        }
+
+        .user-box label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 15px;
+            color: #333;
+            pointer-events: none;
+            transition: 0.5s;
+            font-weight: 700;
+        }
+
+        .user-box input:focus~label,
+        .user-box input:valid~label {
+            top: -20px;
+            left: 0;
+            color: #fff;
+            font-size: 12px;
+        }
+
+        input[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="button"] {
+            color: #120f0f;
+            border: none;
+            word-spacing: 2px;
+            padding: 01px 0px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 11px;
+            background-color: #037e97;
+            font-weight: bold;
+        }
+
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(245, 240, 240, 0.5) url('1sticker.gif') no-repeat center;
+            z-index: 9999;
+        }
+
+        header {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+            background-color: #1f2833;
+            color: #19191a;
+            font-weight: 500;
+            word-spacing: 10px;
+            padding: 30px;
+            height: 40px;
+            padding-right: 0;
+        }
+
+        header nav a {
+            color: #fff;
+            font-size: 15px;
+            text-decoration: none;
+        }
+
+        header h1 {
+            padding-left: 320px;
+            padding-right: 180px;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+    </style>
+    <script>
+        function lettersonly(input) {
+            var regex = /[^a-z ]/gi;
+            input.value = input.value.replace(regex, "");
+        }
+    </script>
+</head>
+
+<body>
+    <div id="loader"></div>
+    <header>
+        <h1>WAREHOUSE MANAGEMENT</h1>
+        <nav>
+            <a href="a">HELP</a>
+            <a href="a">ABOUT</a>
+        </nav>
+    </header>
+    <div class="login-box">
+        <h2>SignUp</h2>
+
+        <div class="user-box">
+            <input type="text" name="uname" id="uname" required="" maxlength="25" onkeyup="lettersonly(this)">
+            <label>User Name</label>
+        </div>
+        <div class="user-box">
+            <input type="text" id="Phone" name="Phone" required="">
+            <label>Phone Number</label>
+        </div>
+        <div class="user-box">
+            <input type="text" name="address" id="address" required="">
+            <label>Address</label>
+        </div>
+
+        <div class="user-box">
+            <input type="email" name="email" id="email" required="">
+            <label>Email Id</label>
+        </div>
+        <div class="user-box">
+            <input type="password" name="password" id="password" required="">
+            <label> New Password</label>
+        </div>
+        <div class="user-box">
+            <input type="password" name="cpassword" id="cpassword" required="" onkeydown="trigger(event)">
+            <label> Confirm Password</label>
+        </div>
+
+        <div>
+            <input type="submit" id="register" value="Submit"><br>
+            <a href="Login.html">
+                <input type="button" value="Already have an Account?">
+            </a>
+        </div>
+
+    </div>
+    <script>
+        window.addEventListener('load', function () {
+            var loader = document.getElementById('loader');
+            loader.style.display = 'none';
+        });
+    </script>
+</body>
+<script>
+    function trigger(event) {
+        if (event.key == "Enter") {
+            event.preventDefault();
+            document.getElementById("register").click();
+        }
+    }
+</script>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+    import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js";
+    import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyC8rGPM2g5S0bq8pIpNmQQR5zKbN5yxi34",
+        authDomain: "warehouse-management-9330c.firebaseapp.com",
+        databaseURL: "https://warehouse-management-9330c-default-rtdb.firebaseio.com",
+        projectId: "warehouse-management-9330c",
+        storageBucket: "warehouse-management-9330c.appspot.com",
+        messagingSenderId: "662529124580",
+        appId: "1:662529124580:web:714ab6d4ca542d7ab464f1"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+    const auth = getAuth();
+
+    document.getElementById('register').addEventListener('click', async (e) => {
+        e.preventDefault();
+        const uname = document.getElementById('uname').value;
+        const Phone = document.getElementById('Phone').value;
+        const address = document.getElementById('address').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const cpassword = document.getElementById('cpassword').value;
+        const type = "Client";
+
+        if (uname !== "" && Phone !== "" && address !== "" && email !== "" && password !== "" && password === cpassword && Phone.toString().length == 10 && password.toString().length >= 8 && (Phone >= 0 || Phone <= 9) && ((Phone[0] == 6) || (Phone[0] == 7) || (Phone[0] == 8) || (Phone[0] == 9))) {
+
+            try {
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                await sendEmailVerification(auth.currentUser);
+
+                alert("Registration is successfully completed. \n\nEmail verification link sent to your Registerd Email-Id. Please check your email to continue!");
+                
+                const user = userCredential.user;
+
+                await set(ref(database, 'Users/' + user.uid), {
+                    uname: uname,
+                    Phone: Phone,
+                    address: address,
+                    email: email,
+                    type: type
+                });
+
+                // Send the request to register.php
+                const formData = new FormData();
+                formData.append('uname', uname);
+                formData.append('Phone', Phone);
+                formData.append('address', address);
+                formData.append('email', email);
+
+                const response = await fetch('register.php', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    console.log('Data successfully sent to register.php');
+                } else {
+                    console.error('Failed to send data to register.php');
+                }
+
+                window.location.href = "Login.html";
+            } catch (error) {
+                console.error("Error:", error);
+                alert("Error: " + error.message);
+            }
+
+        } else if (uname == "" || Phone == "" || address == "" || email == "" || password == "" || cpassword == "") {
+            alert("Please fill the fields before submitting... ");
+        } else if (Phone.toString().length < 10 || Phone.toString().length > 10) {
+            alert("Please enter the correct Phone Number");
+        } else if (password.toString().length < 8) {
+            alert("Password must be at least 8 characters");
+        } else if (password !== cpassword) {
+            alert("Make sure that both passwords match!");
+        } else {
+            alert("Please provide valid details");
+        }
+    });
+</script>
+
+</html>

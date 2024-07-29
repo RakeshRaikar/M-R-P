@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+           
+            background: #c5c6c7;;
+           
+            
+        }
+
+        .container {
+            background: #037e97;
+            border-radius: 12px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+           
+            width: 35%;
+            text-align: left; 
+           margin-left: 30%;
+            margin-top: 90px;
+            
+        }
+
+        h2 {
+            text-shadow: 4px 5px 8px rgba(0, 0, 0, 0.7);
+            font-size: 32px;
+            margin-bottom: 40px;
+            margin-top: 0px;
+            color: #fff;
+            text-align: center;
+        }
+
+        p {
+            font-size: 18px;
+            margin: 5px 0; 
+            color: #fff;
+           
+        }
+
+        .icon {
+            
+            margin-right: 10px;
+            color: #fff;
+        }
+        .content
+        {
+            padding: 5px;   
+        }
+        h1 {
+  color: #ffffff;
+  text-align: center;
+  font-size: 50px;
+  text-shadow: 20px 20px 40px rgba(0, 0, 0, 0.7);
+  font-family: "Helvetica", serif;
+  font-weight: bold;
+  font-style: italic;
+  margin-top: 20px;
+}
+.exit{
+            display: inline-block;
+            padding: 2px 12px;
+            background-color: black;
+            color: #FFF;
+            border-radius: 30px;
+            font-size: 18px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            position: absolute;
+            left:2%;
+            top: 2%;
+           }
+    </style>
+</head>
+<body>
+    <button type="button" class="exit" id="exitBtn" onclick="goBack()"><i class="fa-solid fa-right-from-bracket"></i></button>
+
+    <h1>WAREHOUSE MANAGEMENT</h1>
+    <div class="container">
+        <h2>Contact Us</h2>
+        <p class="content"><i class="fas fa-envelope icon"></i>mrpproject98@gmail.com</p>
+        <p class="content"><i class="fas fa-phone icon"></i>+91-8147285870</p>
+        <p class="content"><i class="fas fa-map-marker-alt icon"></i>B.H Road Sagar, 577-401</p>
+    </div>
+    <script>
+        function goBack() {
+                       
+                       window.location.href="AdminDashboard.html";
+                    }
+                     
+      </script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css">
+   <style>
+      *{
+         margin: 0;
+         padding: 0;
+         text-decoration: none;
+         box-sizing: border-box;
+         font-family:sans-serif;
+      }
+      body
+      {
+         background: #c5c6c7;
+	      background-size: cover;	
+      }
+      .Container .section
+      {
+         width: calc(100% - 225px);
+         margin-left: 225px;
+         transition: all 0.5s ease;
+      }
+      .navB
+      {
+         background: #1f2833;
+	      background-size: cover;
+         height: 80px;
+         display: flex;
+         align-items: center;
+         padding: 0 30px;
+      }
+      .burgerSign a
+      {
+         font-size: 28px;
+         color: #f4fbff;
+      }
+      .Container .section .navB .burgerSign a:hover
+      {
+         color: rgb(18, 255, 223);
+      }
+      .item_side_container
+      {
+         background: #037e97;
+         position: fixed;
+         width: 225px;
+         height: 100%;
+         padding: 20px 0;
+         top: 0px;
+         left: 0px;
+         transition: all 0.5s ease;
+        
+	      background-size: cover;	
+      }
+	  
+   
+      .item_side_container ul li a
+      {
+         display: block;
+         font-size: 16px;
+         position: relative;
+         padding: 13px 30px;
+         border-bottom: 1px solid #5AC3B0;
+         color: rgb(241, 237, 237);
+      }
+      .item_side_container ul li a .icon
+      {
+         color: black;
+         width: 30px;
+         display: inline-block;
+         margin-left: 20px;
+      }
+      .item_side_container ul li a:hover .icon,
+      .item_side_container ul li a.active .icon
+      {
+         color: rgb(18, 255, 223);
+		}
+	   .sidebar a:hover
+	   {
+	   	color: rgb(18, 255, 223);
+      }
+      body.active .Container .item_side_container
+      {
+         left: -225px;
+      }
+      body.active .Container .section
+      {
+         margin-left: 0;
+         width: 100%;
+      }
+      body.active .Container .section img
+      {
+         margin-left: 70px;
+         
+      }
+      body.active .Container .section .navB h2
+      {
+         margin-left: 300px;
+         letter-spacing: 5px;
+         
+      }
+       .body-area
+      {
+         width: 100%;
+         
+      }
+      
+      h2
+      {
+         display: flex;
+     
+     color: aliceblue;
+     
+   
+     margin-left: 230px;
+     font-size: 40px;
+         
+      }
+      .profile
+      {
+         height: 150px;
+         display: flex;
+         justify-content: center;
+         padding-top: 30px;
+                     
+       } 
+       #loader  
+      {
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background: rgba(245, 240, 240, 0.5) url('1sticker.gif') center no-repeat ;
+         z-index: 9999;
+         
+      }
+      .contents 
+      {
+         list-style: none;
+         padding: 0;
+         display: flex;
+         flex-wrap: wrap;
+         align-items: flex-start;
+
+      }
+      .contents li
+      {
+         font-size: 25px;
+         font-family: 'Trebuchet MS';
+         padding: 5px;
+        display: flex;
+        vertical-align: top;
+        margin-right: 10px;
+        align-items: flex-start;
+        margin-bottom: 10px;
+
+      }
+      .contents li i
+      {
+         
+         margin-right: 10px;
+      }
+      
+     
+     
+      .section img
+      {
+         display: inline;
+         margin-left: 20px;
+         
+         width: 300px;
+         height: 210px;
+         margin-top: 15px;
+         border: 1px solid #000;
+         
+         
+      }
+      .section h3
+      {
+         font-size: 30px;
+         color: rgb(249, 249, 249);
+         font-family: 'Trebuchet MS';
+      }
+      .section marquee
+      {
+         background: #037e97;
+         padding: 5px;
+         margin: 10px;
+         
+         
+      }
+     .contents li
+     {
+      font-size: 20px;
+     }
+   </style>
+</head>
+<body>
+   <div id="loader"></div>   
+   <div class="Container">
+         <div class="section">
+               <div class="navB">
+                  <div class="burgerSign">  <a href="#">   <i class="fas fa-bars"></i> </a>
+                  </div> 
+                  <h2  >Warehouse Management</h2>
+               </div>
+            <div>
+              <img src="ware.jpg">
+              <img src="ware2.jpg">
+              <img src="ware3.jpg">
+              <marquee behavior="scroll" direction="left"><h3>Users can rent some space to store their crops securely using this "WAREHOUSE MANAGEMENT SYSTEM" website.</h3></marquee>
+               <ul class="contents">
+                   <li> <i class="fas fa-arrow-right"></i> The website assists you in retail senario such as maintaining healthy stock levels automatically and ensuring    location-allocation in multiple warehouse sites.
+                   <li> <i class="fas fa-arrow-right"></i> This Warehouse Management System website ensures safety storage of inventory for users.
+                   <li> <i class="fas fa-arrow-right"></i> Users can take advantage of this website to store their inventory by registering into the website and can track the maintanance.
+                   <li> <i class="fas fa-arrow-right"></i> Warehouse Management encompesses the use of advanced technologies regarding receiving the inventory, storage, and takeout.
+                   <li> <i class="fas fa-arrow-right"></i>It allows you to store your inventory in some locations where we provide our services regardless of your location.
+               </ul>
+             </div>
+         </div>
+         <div class="item_side_container">
+               <div class="profile" >
+                 <!-- <image src="1674182328541_image.png" width="80px" height="80px">     </image> -->
+               </div>
+            <ul class="sidebar">
+               <li>
+                  <a href="new.html">
+                     <span class="icon"><i class="fas fa-home"></i></span>Home
+                  </a>
+               </li>
+               <li>
+                  <a href="dashboard.html">
+                     <span class="icon"><i class="fas fa-desktop"></i></span>Dashboard
+                  </a>
+               </li>
+               <li>
+                  <a href="about.html">
+                     <span class="icon"><i class="fa fa-info-circle"></i></span>About
+                  </a>
+               </li>
+               <li>
+                  <a href="help.html">
+                     <span class="icon"><i class="fa-solid fa-phone"></i></span>Contact Us
+                  </a>
+               </li>
+               <li>
+                  <a href="Logout.html">
+                     <span class="icon"><i class="fa-solid fa-sign-out"></i></span>Log out
+                 
+               </li>
+            </ul>
+         </div>
+      </div>
+      <script>
+            document.querySelector(".burgerSign").addEventListener("click", function()
+            {
+               document.querySelector("body").classList.toggle("active");
+            });
+            window.addEventListener('load',function()
+            {
+                  var loader = document.getElementById('loader');
+                  loader.style.display = 'none';
+                  
+            });
+               
+
+
+               /* function DisableBackButton() {
+                        window.history.forward()
+                        }
+                        DisableBackButton();
+                        window.onload = DisableBackButton;
+                        window.onpageshow = function(evt) { if (evt.persisted) DisableBackButton() }
+                        window.onunload = function() { void (0) }          */                        
+            
+      </script>
+  </body>
+</html>

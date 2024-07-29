@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>About Warehouse Management</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css">
+
+  <title>Warehouse Management</title>
+  <style>
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      margin: 0px;
+      padding: 0px;
+      background: #c5c6c7;
+      
+    }
+    
+    h1 {
+  color: #ffffff;
+  text-align: center;
+  font-size: 50px;
+  text-shadow: 20px 20px 40px rgba(0, 0, 0, 0.7);
+  font-family: "Helvetica", serif;
+  font-weight: bold;
+  font-style: italic;
+}
+
+    
+    p {
+  color: #000000;
+  line-height: 1.5;
+  text-align: center;
+  font-size: 20px;
+ font-family: Arial, sans-serif;
+  font-style: italic;
+}
+
+    
+.team-members {
+  margin-top: 40px;
+  display: none;
+  text-align: center;
+  font-size: 15px;
+  color: #000000;
+  font-style: italic;
+}
+
+.team-member {
+  margin-bottom: 20px;
+}
+
+.team-member strong {
+  display: block;
+  font-weight: bold;
+  font-size: 28px;
+  color: #ffffff;
+  text-shadow: 4px 5px 8px rgba(0, 0, 0, 0.7);
+  font-family: "Times New Roman", serif;
+  font-style: italic;
+  
+}
+
+.team-button {
+  text-align: left;
+  
+}
+
+    
+    footer {
+      margin-top: 100px;
+      text-align: center;
+      color: hsl(0, 0%, 100%);
+    }
+    
+    .details {
+      display: none;
+      margin-top: 20px;
+      text-align: center;
+      font-size: 20px;
+    }
+    
+    .btn-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      
+    }
+    
+    button {
+      font-size: 20px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+      background-color: #037e97;
+      color: #fff;
+    }
+    
+    button:hover {
+      background-color: #1b3f6b;
+    }
+    
+   
+    .btn-about {
+      font-size: 20px;
+      text-align: left;
+      margin-left: 20px;
+    }
+    
+    .btn-about.active {
+      color: #fff;
+    }
+    
+    .advantages {
+ 
+  display: none;
+  text-align: center;
+}
+
+.advantages ul {
+  /* list-style-type: disc; */
+  padding-left: 10px;
+  text-align: left;
+}
+
+.advantages li {
+ 
+  font-size: 20px;
+  color: #000000;
+  
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  font-style: italic;
+}
+.exit{
+            display: inline-block;
+            padding: 2px 12px;
+            background-color: black;
+            color: #FFF;
+            border-radius: 30px;
+            font-size: 18px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            position: absolute;
+            left:2%;
+            top: 2%;
+           }
+  </style>
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> -->
+  <script>
+    function toggleTeamMembers() {
+      var teamMembers = document.querySelector('.team-members');
+      if (teamMembers.style.display === 'none') {
+        teamMembers.style.display = 'block';
+      } else {
+        teamMembers.style.display = 'none';
+      }
+    }
+    
+    function toggleDetails() {
+      var details = document.querySelector('.details');
+      if (details.style.display === 'none') {
+        details.style.display = 'block';
+      } else {
+        details.style.display = 'none';
+      }
+      
+      var btnAbout = document.querySelector('.btn-about');
+      btnAbout.classList.toggle('active');
+      
+      var paragraphs = document.querySelectorAll('p');
+      paragraphs.forEach(function(p) {
+        p.classList.toggle('active');
+      });
+    }
+    
+    function toggleAdvantages() {
+      var advantages = document.querySelector('.advantages');
+      if (advantages.style.display === 'none') {
+        advantages.style.display = 'block';
+      } else {
+        advantages.style.display = 'none';
+      }
+    }
+  </script>
+</head>
+<body>
+  <button type="button" class="exit" id="exitBtn" onclick="goBack()"><i class="fa-solid fa-right-from-bracket"></i></button>
+
+  <h1>WAREHOUSE MANAGEMENT</h1>
+  
+  <div class="btn-container">
+    <button onclick="toggleAdvantages()" class="btn">ADVANTAGES OF WAREHOUSE MANAGEMENT</button>
+  
+    <div class="advantages">
+      <ul>
+        <li>Makes social distancing possible.</li>
+        <li>Offers real-time inventory data.</li>
+        <li>Reduces operating costs.</li>
+        <li>Improves demand forecasts.</li>
+        <li>Creates efficiencies for specific goals.</li>
+        <li>Improves traceability.</li>
+        <li>Improves employee morale.</li>
+        <li>Enables digital transformation.</li>
+      </ul>
+    </div>
+    
+    <button onclick="toggleDetails()" class="btn btn-about">ABOUT WAREHOUSE MANAGEMENT</button>
+  
+    <div class="details">
+      <p>Warehouse management encompasses the principles and processes involved in running the 
+        day-to-day operations of a warehouse. At a high level, this includes
+        receiving and organizing warehouse space, scheduling labor, managing inventory, and fulfilling orders.
+         Warehouse plays a key part in ensuring that your company meets its productivity goals. 
+         A Warehouse Management System adds efficiency, consistency and quality control to the process by 
+         helping you move goods through your warehouse at maximum speed, improving every stage of the fulfillment process.</p>
+    </div>
+    
+    <div class="team-button">
+      <button onclick="toggleTeamMembers()" class="btn">OUR TEAM</button>
+    </div>
+  </div>
+  
+  <div class="team-members">
+    
+    <div class="team-member">
+      <strong>RAKESH</strong>
+      <span>Role: Manager</span>
+    </div>
+    
+    <div class="team-member">
+      <strong>MADHURA </strong>
+      <span>Role: Supervisor</span>
+    </div>
+    
+    <div class="team-member">
+      <strong> PRAJWAL</strong>
+      <span>Role: Operator</span>
+    </div>
+  </div>
+<!-- <div class="btn-container">
+  <button class="btn btn-print" onclick="window.print()">Print</button>
+</div> -->
+  <footer>
+    &copy; 2023 Warehouse Management. All rights reserved.
+  </footer>
+  <script>
+    var buttons = document.querySelectorAll('.btn');
+    buttons.forEach(function(button) {
+      button.addEventListener('click', function() {
+        buttons.forEach(function(btn) {
+          btn.classList.remove('active');
+        });
+        this.classList.add('active');
+      });
+    });
+  </script>
+<script>
+  function goBack() {
+                 
+                 window.location.href="AdminDashboard.html";
+              }
+               
+</script>
+</body> 
+</html>

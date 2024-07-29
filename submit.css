@@ -1,0 +1,68 @@
+*
+{
+    padding: 0;
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+}
+body
+{
+    background:skyblue;
+    background-size: cover;
+    color: #fff;
+}
+
+.submitform h2
+{
+    font-size: 40px;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 40px 0;
+    text-decoration: underline;
+}
+.submitform h3
+{
+    margin-left: 100px;
+    font-size: 28px;
+    margin-bottom: 10px;
+
+}
+.submitform ul
+{
+    margin-left: 225px;
+    margin-top: 10px;
+    padding: 0px;
+    font-size: 25px;
+}
+
+
+
+.submitform input[type="text"]
+{
+    margin-left: 5px;
+    margin-top: 10px;
+    font-size: 15px;
+    padding: 5px 0px;
+    margin-bottom: 5px;
+    width: 6%;
+    border: 0;
+    border-radius: 6px;
+    outline: none;
+    font-weight: bold;
+    
+}
+.submitform button
+{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 90PX;
+    padding: 0px 0px;
+    width: 15%;
+    border: 0;
+    border-radius: 5px;
+    background-color: lemonchiffon;
+}
+.submitform button:hover
+{
+    background-color: black;
+    color: #fff;
+}

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head><!--
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">  -->
+	<!-- <link rel="stylesheet" type="text/css" href="s.css">    -->
+	<title>Login Page</title> 
+    <style>
+        * {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: sans-serif;
+}
+
+body {
+	background: #c5c6c7;
+	background-size: cover;	
+}
+
+.login-box {
+	width: 280px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #037e97;
+	padding: 40px;
+	border-radius: 10px;
+}
+
+.login-box h2 {
+	text-align: center;
+	margin-bottom: 30px;
+	color: #fff;
+    font-size: 35px;
+	text-shadow: 4px 5px 8px rgba(0, 0, 0, 0.7);
+}
+
+.user-box {
+	position: relative;
+}
+
+.user-box input {
+	width: 100%;
+	padding: 10px 0;
+	font-size: 16px;
+	color: #fff;
+	margin-bottom: 30px;
+	border: none;
+	border-bottom: 1px solid #333;
+	outline: none;
+	
+	background-color: #037e97;
+	
+}
+
+.user-box label {
+	position: absolute;
+	top: 0;
+	left: 0;
+	font-size: 16px;
+	color: #333;
+	pointer-events: none;
+	transition: 0.5s;
+	font-weight: 700;
+}
+
+.user-box input:focus ~ label,
+.user-box input:valid ~ label {
+	top: -20px;
+	left: 0;
+	color: #fff;
+	font-size: 12px;
+}
+
+input[type="submit"] {
+	background-color: #333;
+	color: #fff;
+	border: none;
+	padding: 10px 30px;
+	border-radius: 5px;
+	cursor: pointer;
+	text-align: center;
+}
+input[type="button"]{
+	
+	color: #120f0f;
+	border: none;
+	word-spacing: 0px;
+	padding: 0px 7px;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: x-small;
+	background-color: #037e97;
+    font-weight: bold;
+	font-size: 12px;
+	padding-top: 7px;
+}
+
+
+header
+{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+	background-color: #1f2833;
+	color: white;
+	
+	font-weight:500;
+	word-spacing: 10px;
+	padding: 30px;
+	height: 40px;
+	padding-right: 0;
+	
+}
+header nav a{
+	color: white;
+	font-size: 15px;
+	text-decoration: none;	
+	
+	}
+header h1{
+	padding-left: 320px;
+	padding-right: 180px;
+	letter-spacing: 1px;
+
+}
+
+#loader
+{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(245, 240, 240, 0.5) url('1sticker.gif') no-repeat center;
+	z-index: 9999;
+	
+}
+
+
+
+
+    </style>
+</head>
+<body>
+	<div id="loader"></div>
+	<header>
+		<h1>WAREHOUSE MANAGEMENT</h1>
+		<nav>	    
+		<a href="help.html">HELP</a>
+		<a href="about.html">ABOUT</a>	
+		<nav>
+	</header>	         
+         
+	<div class="login-box">
+	
+      
+		<h2>Login</h2>
+		<div  class="passform" >
+            
+			<div class="user-box">
+				<input type="email" name="email" id="email" required="" >
+                <label>Email Id</label>
+			</div>
+			<div class="user-box">
+				<input type="password" name="password" id="password"   required="" onkeydown="trigger(event)">
+                
+				<label>Password</label>
+			</div> 	
+			<div>	
+				<input type="submit" id="sign"  value="Login"  ><br>
+				<a href="registration.html"><input type="button" id="register" value="New user?  Register now!"></a>
+                <a href="forget-pass.html" id="forget-pass"><input  type="button" value="Forget password?"</a>
+            </div>
+		</div>
+	</div> 
+<script>
+window.addEventListener('load',function()
+	{
+		var loader = document.getElementById('loader');
+		loader.style.display = 'none';
+		
+	});
+   
+
+</script>
+
+ 
+
+</body>
+<script>
+    function  trigger(event)
+    {
+       if(event.key == "Enter")
+       {
+           event.preventDefault();
+           document.getElementById("sign").click();
+       }
+    }
+   
+    
+</script>
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+    import { getDatabase, set, ref, update,get,child} from "https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyC8rGPM2g5S0bq8pIpNmQQR5zKbN5yxi34",
+      authDomain: "warehouse-management-9330c.firebaseapp.com",
+      databaseURL: "https://warehouse-management-9330c-default-rtdb.firebaseio.com",
+      projectId: "warehouse-management-9330c",
+      storageBucket: "warehouse-management-9330c.appspot.com",
+      messagingSenderId: "662529124580",
+      appId: "1:662529124580:web:714ab6d4ca542d7ab464f1"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+    const auth = getAuth();
+
+    const dbref=getDatabase();
+    
+
+    sign.addEventListener('click',(e) =>
+    {
+       loader.style.display = 'block';
+        
+        var email = document.getElementById('email').value;
+        var password= document.getElementById('password').value;
+       
+        
+        
+        if(email =="" && password =="")
+        {
+            alert("Please enter your email and password");
+            loader.style.display = 'none'; 
+        }
+        else if(email=="")
+        {
+            alert("Please enter the Email-Id");
+            loader.style.display = 'none'; 
+        }
+        else if(password =="")
+        {
+            alert("please enter the password");
+            loader.style.display = 'none'; 
+        }
+         
+        if(email !=="" && password !=="")
+        { 
+            
+
+             signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+               if(user)
+               {
+                 if(user.emailVerified)
+                     {                
+                        
+                  
+                    const dt = new Date();
+ 
+                    var user_pro;
+                    get(ref(database,'Users/'+user.uid)).then((snapshot) =>
+                    {
+                        
+                        if(snapshot.exists())
+                        {
+                            console.log(snapshot.val());
+                            user_pro = snapshot.val().type;
+                        }
+                        if(user_pro=="Client")
+                        {
+                            window.location.href="new.html";
+                        }
+                        if(user_pro=="Admin")
+                        {
+                            
+                            window.location.href="Admin/AdminHome.html";
+                        }
+                    })
+                    
+                    update(ref(database, 'Users/' + user.uid),{
+                        last_login: dt
+                      
+                  
+                })
+                     }
+                     else{
+                          alert('Email not verified');
+                           // return;
+                            loader.style.display = 'none'; 
+                        } 
+                }
+              loader.style.display = 'none'; 
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+				
+                alert(errorCode);
+                loader.style.display = 'none'; 
+                
+                
+                
+            });
+        }
+        
+        
+    });
+
+    register.addEventListener('click',(e) =>
+    {
+        loader.style.display = 'block';
+    });
+	
+  </script>
+  
+
+</html>
